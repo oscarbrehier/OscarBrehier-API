@@ -3,9 +3,13 @@ import uniqid from 'uniqid';
 import Post from "../models/post.js";
 const router = express.Router();
 
-const basic = {
+const successMessage = {
     message: 'Success',
     status: 200
+};
+
+const errorMessage = {
+    message: 'Error'
 };
 
 router.post('/post', (req, res) => {
@@ -24,14 +28,39 @@ router.post('/post', (req, res) => {
         .then(result => console.log(result))
         .catch(error => console.error(error));
 
-    res.json(basic);
+    res.json(successMessage);
 
 });
 
-router.get('/posts', (req, res) => {
+router.get('/posts', async (req, res) => {
 
-    res.json(basic);
+    try {
+
+        const Posts = await Post.find();
+        res.status(200).json(Posts);
+
+    } catch (error) {
+
+        console.error(error);
+        res.json(errorMessage);
+
+    }
 
 });
 
 export default router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
