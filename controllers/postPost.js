@@ -1,25 +1,36 @@
 import uniqid from "uniqid";
 import Post from "../models/post.js";
+import {code_201, code_400} from "../status.js";
 
 export const postPost = async (req, res) => {
 
     let data = req.body;
     let id = uniqid();
 
-    const newPost = new Post({
-        id: id,
-        title: data.title,
-        subtitle: data.subtitle,
-        content: data.content
-    });
+    if(data.title) {
 
-    newPost.save()
-        .then(result => console.log(result))
-        .catch(error => console.error(error));
+        const newPost = new Post({
+            id: id,
+            title: data.title,
+            subtitle: data.subtitle,
+            content: data.content
+        });
 
-    res.json({
-        code: 202,
-        message: 'Post created'
-    });
+        newPost.save()
+            .catch(error => console.error(error));
+
+        code_201(res).json({
+            status: 201,
+            message: 'Post created'
+        });
+
+    } else {
+
+        code_400(res).json({
+            status: 400,
+            message: 'Please fill out the required content'
+        });
+
+    }
 
 }

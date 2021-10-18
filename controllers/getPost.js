@@ -1,4 +1,5 @@
 import Post from "../models/post.js";
+import {code_200, code_404} from "../status.js";
 
 export const getPost = async (req, res) => {
 
@@ -12,14 +13,14 @@ export const getPost = async (req, res) => {
 
         if(!post) {
 
-            res.json({
-                code: 404,
+            code_404(res).json({
+                status: 404,
                 message: 'Post not found'
             });
 
         } else {
 
-            res.json(post);
+            code_200(res).json(post);
 
         }
 
