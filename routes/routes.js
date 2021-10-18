@@ -32,7 +32,7 @@ router.post('/post', (req, res) => {
 
 });
 
-router.get('/posts', async (req, res) => {
+router.get('/post', async (req, res) => {
 
     try {
 
@@ -47,6 +47,32 @@ router.get('/posts', async (req, res) => {
     }
 
 });
+
+router.get('/post/:id', async (req, res) => {
+
+    await Post.findOne({
+
+        id: req.params.id
+
+    }, (err, post) => {
+
+        if(err) console.error(err);
+
+        if(!post) {
+
+            res.json({
+                message: 'No post found with the provided id'
+            });
+
+        } else {
+
+            res.json(post);
+
+        }
+
+    }).clone().catch(function(err) { console.log(err )});
+
+})
 
 export default router;
 
