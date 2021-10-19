@@ -1,4 +1,5 @@
 import uniqid from "uniqid";
+import token from "../utils/token.js";
 import Post from "../models/post.js";
 import {code_201, code_400} from "../status.js";
 
@@ -6,30 +7,35 @@ export const postPost = async (req, res) => {
 
     let data = req.body;
     let id = uniqid();
+    let auth = token(req, res);
 
-    if(data.title) {
+    if(auth === true) {
 
-        const newPost = new Post({
-            id: id,
-            title: data.title,
-            subtitle: data.subtitle,
-            content: data.content
-        });
+        if(data.title) {
 
-        newPost.save()
-            .catch(error => console.error(error));
+            const newPost = new Post({
+                id: id,
+                title: data.title,
+                subtitle: data.subtitle,
+                content: data.content
+            });
 
-        code_201(res).json({
-            status: 201,
-            message: 'Post created'
-        });
+            newPost.save()
+                .catch(error => console.error(error));
 
-    } else {
+            code_201(res).json({
+                status: 201,
+                message: 'Post created'
+            });
 
-        code_400(res).json({
-            status: 400,
-            message: 'Please fill out the required content'
-        });
+        } else {
+
+            code_400(res).json({
+                status: 400,
+                message: 'Please fill out the required content'
+            });
+
+        }
 
     }
 

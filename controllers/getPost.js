@@ -1,29 +1,36 @@
 import Post from "../models/post.js";
 import {code_200, code_404} from "../status.js";
+import token from "../utils/token.js";
 
 export const getPost = async (req, res) => {
 
-    await Post.findOne({
+    let auth = token(req, res);
 
-        id: req.params.id
+    if(auth === true) {
 
-    }, (err, post) => {
+        await Post.findOne({
 
-        if(err) console.error(err);
+            id: req.params.id
 
-        if(!post) {
+        }, (err, post) => {
 
-            code_404(res).json({
-                status: 404,
-                message: 'Post not found'
-            });
+            if(err) console.error(err);
 
-        } else {
+            if(!post) {
 
-            code_200(res).json(post);
+                code_404(res).json({
+                    status: 404,
+                    message: 'Post not found'
+                });
 
-        }
+            } else {
 
-    }).clone().catch(function(err) { console.log(err )});
+                code_200(res).json(post);
+
+            }
+
+        }).clone().catch(function(err) { console.log(err )});
+
+    }
 
 }
