@@ -5,10 +5,12 @@ const router = express.Router();
 import {postPost} from "../controllers/postPost.js";
 import {getPosts} from "../controllers/getPosts.js";
 import {getPost} from "../controllers/getPost.js";
+import {delPost} from "../controllers/delPost.js";
 
 router.post('/post', postPost);
 router.get('/post', getPosts);
 router.get('/post/:id', getPost);
+router.delete('/post/:id', delPost);
 
 export default router;
 
