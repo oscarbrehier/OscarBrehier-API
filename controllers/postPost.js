@@ -11,13 +11,14 @@ export const postPost = async (req, res) => {
 
     if(auth === true) {
 
-        if(data.title) {
+        if(data.name) {
 
             const newPost = new Post({
                 id: id,
-                title: data.title,
-                subtitle: data.subtitle,
-                content: data.content
+                name: data.name,
+                description: data.description,
+                languages: data.language,
+                githubURL: data.githubURL,
             });
 
             newPost.save()

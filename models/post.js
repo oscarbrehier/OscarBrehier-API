@@ -6,15 +6,10 @@ const postSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    title: {
-        type: String,
-        required: true,
-    },
-    subtitle: String,
-    content: {
-        type: String,
-        required: true,
-    },
+    name: String,
+    description: String,
+    languages: String,
+    githubURL: String,
 
 });
 
