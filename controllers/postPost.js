@@ -17,7 +17,7 @@ export const postPost = async (req, res) => {
                 id: id,
                 name: data.name,
                 description: data.description,
-                languages: data.language,
+                languages: data.languages,
                 githubURL: data.githubURL,
             });
 
