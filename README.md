@@ -5,16 +5,16 @@ A simple RESTful API used for displaying various information on my [website](brh
 
 ## Requests
 
-###GET [/post](https://brhoscar-api.herokuapp.com/post)
+### GET [/post](https://brhoscar-api.herokuapp.com/post)
 - Return the list of my projects
 - Headers: `token: your API auth token`
 
-###GET [/post/:id](https://brhoscar-api.herokuapp.com/post/:id)
+### GET [/post/:id](https://brhoscar-api.herokuapp.com/post/:id)
 - Return a specific project
 - Headers: `token: your API auth token`
 - id: `the targeted project id`
 
-###POST [/post](https://brhoscar-api.herokuapp.com/post) ( Owner Only )
+### POST [/post](https://brhoscar-api.herokuapp.com/post) ( Owner Only )
 - Post a new project
 - Body: ```{
     "name": "",
