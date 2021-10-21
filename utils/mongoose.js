@@ -1,9 +1,8 @@
 import mongoose from 'mongoose';
-import config from "../config.js";
 
 export default function init() {
 
-    const uri = `mongodb+srv://${config.username}:${config.password}@cluster01.by2xl.mongodb.net/data`;
+    const uri = `mongodb+srv://${process.env.username}:${process.env.password}@cluster01.by2xl.mongodb.net/data`;
     const options = {
         useNewUrlParser: true,
         useUnifiedTopology: true

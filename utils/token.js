@@ -1,4 +1,3 @@
-import config from "../config.js";
 import {code_400, code_401} from "../status.js";
 
 export default function token(req, res) {
@@ -14,7 +13,7 @@ export default function token(req, res) {
 
             return false;
 
-        } else if(req.headers.token !== config.token) {
+        } else if(req.headers.token !== process.env.token) {
 
             code_400(res).json({
                 status: 400,
