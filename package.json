@@ -1,0 +1,35 @@
+{
+  "name": "web-api-oscarbrehier",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "babel-node": "babel-node --presets=@babel/preset-env",
+    "start": "nodemon --exec npm run babel-node -- src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oscarbrehier/OscarBrehier-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oscarbrehier/OscarBrehier-API/issues"
+  },
+  "homepage": "https://github.com/oscarbrehier/OscarBrehier-API#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "apollo-server-express": "^3.6.3",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "graphql": "^16.3.0",
+    "mongoose": "^6.2.3"
+  }
+}
