@@ -1,14 +1,18 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export default function init() {
 
-    const uri = `mongodb+srv://Oscar:husky2005@cluster01.by2xl.mongodb.net/data`;
+    const uri = process.env.URI;
     const options = {
         useNewUrlParser: true,
         useUnifiedTopology: true
     };
 
-    mongoose.connect(uri, options);
+    console.log(uri);
+
+    mongoose.connect(`${uri}`, options);
 
     mongoose.connection.on('connected', () => {
         console.log('📦 Mongoose database connected');
