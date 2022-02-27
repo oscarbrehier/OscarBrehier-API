@@ -1,20 +1,25 @@
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-dotenv.config();
 
-export default function database() {
+export default function init() {
 
+    const uri = `mongodb+srv://Oscar:husky2005@cluster01.by2xl.mongodb.net/data`;
     const options = {
-        useNewUrlParser: true, 
+        useNewUrlParser: true,
         useUnifiedTopology: true
     };
 
-    mongoose.connect(process.env.DATABASE_URI, options);
+    mongoose.connect(uri, options);
 
-    console.log('database');
-
-    mongoose.connection.on('connection', () => {
+    mongoose.connection.on('connected', () => {
         console.log('📦 Mongoose database connected');
     });
 
-};
+    mongoose.connection.on('disconnected', () => {
+        console.log('⛑️ Mongoose database disconnected');
+    });
+
+    mongoose.connection.on('error', (error) => {
+        console.error(`⏰ Mongoose database error \n${error.stack}`);
+    });
+
+}
