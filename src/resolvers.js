@@ -1,11 +1,11 @@
-import {Cat, Projet} from './models/models';
+import {Cat, Projet} from './models/models.js';
 
 export const resolvers = {
 
     Query: {
         meow: () => 'Meoowww 🐈',
         cats: async () => await Cat.find(),
-        projets: async () => await Projet.find()
+        getAllProjets: async () => await Projet.find()
     },
 
     Mutation: {

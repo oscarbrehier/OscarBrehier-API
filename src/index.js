@@ -1,8 +1,8 @@
 import { ApolloServer as AS } from 'apollo-server-express';
 import express from 'express';
-import {resolvers} from './resolvers';
-import {typeDefs} from './typeDefs';
-import init from './database';
+import {resolvers} from './resolvers.js';
+import {typeDefs} from './typeDefs.js';
+import init from './database.js';
 
 const startServer = async () => {
 
@@ -13,7 +13,7 @@ const startServer = async () => {
 
     app.listen({ port: 4001 }, () => {
         console.clear();
-        console.log(`🚀 Application ready at http://localhost:4000${server.graphqlPath}`);
+        console.log(`🚀 Application ready at http://localhost:4001${server.graphqlPath}`);
     });
 
 }; 

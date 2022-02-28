@@ -5,7 +5,7 @@ export const typeDefs = gql`
     type Query {
         meow: String!
         cats: [Cat!]!
-        projets: [Projet!]!
+        getAllProjets: [Projet!]!
     },
 
     type Cat {
