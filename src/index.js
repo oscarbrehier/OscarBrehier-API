@@ -4,6 +4,8 @@ import {resolvers} from './resolvers.js';
 import {typeDefs} from './typeDefs.js';
 import init from './database.js';
 
+const PORT = process.env.PORT || 4001;
+
 const startServer = async () => {
 
     const app = express();
@@ -11,9 +13,9 @@ const startServer = async () => {
     await server.start();
     server.applyMiddleware({ app });
 
-    app.listen({ port: 4001 }, () => {
+    app.listen({ port: PORT }, () => {
         console.clear();
-        console.log(`🚀 Application ready at http://localhost:4001${server.graphqlPath}`);
+        console.log(`🚀 Application ready at http://localhost:${PORT}${server.graphqlPath}`);
     });
 
 }; 
