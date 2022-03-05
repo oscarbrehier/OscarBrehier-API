@@ -4,7 +4,7 @@ import {resolvers} from './resolvers.js';
 import {typeDefs} from './typeDefs.js';
 import init from './database.js';
 
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT ||  4001;
 
 const startServer = async () => {
 

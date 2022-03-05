@@ -15,7 +15,7 @@ export const resolvers = {
             await kitty.save();
             return kitty;
         },
-        
+           
         createProjet: async (_, { titre, sous_titre, description, categorie}) => {
             const projet = new Projet({ titre, sous_titre, description, categorie });
             await projet.save();      
